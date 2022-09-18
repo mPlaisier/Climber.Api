@@ -39,6 +39,24 @@ components:
         refresh:
           $ref: '#/components/schemas/Token'
 
+    Club:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        isMember:
+          type: boolean
+          default: false
+        city:
+          type: string
+      example:
+        id: 5ebac534954b54139806c112
+        name: Bleau climbing team
+        isMember: true
+        city: Ghent
+
     Error:
       type: object
       properties:

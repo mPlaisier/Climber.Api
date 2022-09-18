@@ -12,7 +12,8 @@
   "scripts": {
     "start": "pm2 start ecosystem.config.json --no-daemon",
     "dev": "cross-env NODE_ENV=development nodemon src/index.js",
-    "test": "jest -i --colors --verbose --detectOpenHandles",
+    "test:detectOpenHandles": "jest -i --colors --verbose --detectOpenHandles",
+    "test": "jest -i --colors --verbose",
     "test:watch": "jest -i --watchAll",
     "coverage": "jest -i --coverage",
     "coverage:coveralls": "jest -i --coverage --coverageReporters=text-lcov | coveralls",
@@ -20,7 +21,8 @@
     "lint:fix": "eslint . --fix",
     "prettier": "prettier --check **/*.js",
     "prettier:fix": "prettier --write **/*.js",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "test-new-model": "jest -i --colors --verbose 'club.test'"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
