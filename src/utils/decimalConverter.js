@@ -7,8 +7,6 @@ const decimalConverter = (value) => {
   if (typeof value !== 'undefined') {
     return parseFloat(value.toString());
   }
-  
-  console.log(value);
 
   return value;
 };
