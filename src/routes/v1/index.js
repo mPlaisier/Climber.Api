@@ -4,6 +4,7 @@ const userRoute = require('./user.route');
 
 const clubRoute = require('./club.route');
 const subscriptionRoute = require('./subscription.route');
+const sessionRoute = require('./session.route');
 
 const docsRoute = require('./docs.route');
 
@@ -27,6 +28,10 @@ const defaultRoutes = [
   {
     path: '/subscription',
     route: subscriptionRoute,
+  },
+  {
+    path: '/session',
+    route: sessionRoute,
   },
 ];
 

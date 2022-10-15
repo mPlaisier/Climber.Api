@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const faker = require('faker');
 const { Subscription } = require('../../src/models');
 const { subscriptionType } = require('../../src/models/climber/enums/subscriptionType');
+const { clubOne } = require('./club.fixture');
 
 const subscriptionCreate = {
   datePurchase: new Date().toISOString(),
@@ -14,7 +15,7 @@ const subscriptionCreate = {
 const subscriptionOne = {
   _id: mongoose.Types.ObjectId(),
   datePurchase: new Date().toISOString(),
-  club: mongoose.Types.ObjectId(),
+  club: clubOne._id.toHexString(),
   subscriptionType: faker.random.arrayElement(subscriptionType),
   price: faker.datatype.number({ min: 1, max: 100, precision: 0.01 }),
   isActive: faker.datatype.boolean(),
