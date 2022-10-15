@@ -5,3 +5,4 @@ module.exports.userService = require('./user.service');
 
 // Climber
 module.exports.clubService = require('./climber/club.service');
+module.exports.subscriptionService = require('./climber/subscription.service');
