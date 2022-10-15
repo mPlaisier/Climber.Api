@@ -3,3 +3,4 @@ module.exports.userController = require('./user.controller');
 
 // Climber
 module.exports.clubController = require('./climber/club.controller');
+module.exports.subscriptionController = require('./climber/subscription.controller');

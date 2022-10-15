@@ -3,3 +3,4 @@ module.exports.User = require('./user.model');
 
 // CLimber
 module.exports.Club = require('./climber/club');
+module.exports.Subscription = require('./climber/subscription');

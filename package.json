@@ -22,7 +22,7 @@
     "prettier": "prettier --check **/*.js",
     "prettier:fix": "prettier --write **/*.js",
     "prepare": "husky install",
-    "test-new-model": "jest -i --colors --verbose 'club.test'"
+    "test-new-model": "jest -i --colors --verbose 'subscription.test'"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
