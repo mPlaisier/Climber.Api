@@ -1,6 +1,8 @@
 const Joi = require('joi');
 const { objectId } = require('../custom.validation');
 
+const { eClubClimbingType } = require('../../models/climber/enums/eClubClimbingType');
+
 const getClubs = {
   query: Joi.object().keys({
     sortBy: Joi.string(),
@@ -16,6 +18,9 @@ const getClubs = {
 const createClub = {
   body: Joi.object().keys({
     name: Joi.string().required(),
+    clubClimbingType: Joi.string()
+      .valid(...eClubClimbingType)
+      .required(),
     isMember: Joi.boolean(),
     city: Joi.string(),
   }),
@@ -27,6 +32,7 @@ const updateClub = {
   }),
   body: Joi.object().keys({
     name: Joi.string(),
+    clubClimbingType: Joi.string().valid(...eClubClimbingType),
     isMember: Joi.boolean(),
     city: Joi.string(),
   }),

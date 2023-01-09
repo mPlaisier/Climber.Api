@@ -1,4 +1,5 @@
 const eGrade = [
+  'Unknown',
   'Four',
   'FiveA',
   'FiveB',

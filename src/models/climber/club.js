@@ -1,11 +1,18 @@
 const mongoose = require('mongoose');
 const { toJSON, paginate } = require('../plugins');
 
+const { eClubClimbingType } = require('./enums/eClubClimbingType');
+
 const clubSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
     trim: true,
+  },
+  clubClimbingType: {
+    type: String,
+    enum: eClubClimbingType,
+    required: true,
   },
   isMember: {
     type: Boolean,

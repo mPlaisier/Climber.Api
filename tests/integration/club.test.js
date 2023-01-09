@@ -6,22 +6,12 @@ const setupTestDB = require('../utils/setupTestDB');
 const { Club } = require('../../src/models');
 const { userOne, userTwo, insertUsers } = require('../fixtures/user.fixture');
 const { userOneAccessToken } = require('../fixtures/token.fixture');
-const { clubOne, clubTwo, clubThree, insertClubs } = require('../fixtures/club.fixture');
+const { newClub, clubOne, clubTwo, clubThree, insertClubs } = require('../fixtures/club.fixture');
 
 setupTestDB();
 
 describe('Club routes', () => {
   describe('POST /v1/club', () => {
-    let newClub;
-
-    beforeEach(() => {
-      newClub = {
-        name: faker.name.findName(),
-        isMember: true,
-        city: faker.name.findName(),
-      };
-    });
-
     test('should return 201 and successfully create new club if data is ok', async () => {
       await insertUsers([userOne]);
 
@@ -35,6 +25,7 @@ describe('Club routes', () => {
       expect(res.body).toEqual({
         id: expect.anything(),
         name: newClub.name,
+        clubClimbingType: newClub.clubClimbingType,
         isMember: newClub.isMember,
         city: newClub.city,
       });
@@ -43,6 +34,7 @@ describe('Club routes', () => {
       expect(dbClub).toBeDefined();
       expect(dbClub).toMatchObject({
         name: newClub.name,
+        clubClimbingType: newClub.clubClimbingType,
         isMember: newClub.isMember,
         city: newClub.city,
       });
@@ -55,26 +47,26 @@ describe('Club routes', () => {
     test('should return 400 error if name is missing', async () => {
       await insertUsers([userOne]);
 
-      newClub = {};
+      const invalidNewClub = {};
 
       await request(app)
         .post('/v1/club')
         .set('Authorization', `Bearer ${userOneAccessToken}`)
-        .send(newClub)
+        .send(invalidNewClub)
         .expect(httpStatus.BAD_REQUEST);
     });
 
     test('should return 400 error if name is invalid', async () => {
       await insertUsers([userOne]);
 
-      newClub = {
+      const invalidClub = {
         name: '',
       };
 
       await request(app)
         .post('/v1/club')
         .set('Authorization', `Bearer ${userOneAccessToken}`)
-        .send(newClub)
+        .send(invalidClub)
         .expect(httpStatus.BAD_REQUEST);
     });
   });
@@ -101,6 +93,7 @@ describe('Club routes', () => {
       expect(res.body.results[0]).toEqual({
         id: clubOne._id.toHexString(),
         name: clubOne.name,
+        clubClimbingType: clubOne.clubClimbingType,
         isMember: clubOne.isMember,
         city: clubOne.city,
       });
@@ -150,6 +143,7 @@ describe('Club routes', () => {
       expect(res.body).toEqual({
         id: clubOne._id.toHexString(),
         name: updateBody.name,
+        clubClimbingType: clubOne.clubClimbingType,
         isMember: clubOne.isMember,
         city: clubOne.city,
       });
