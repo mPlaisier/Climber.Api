@@ -44,6 +44,8 @@ module.exports = router;
  *             properties:
  *               name:
  *                 type: string
+ *               clubClimbingType:
+ *                 type: enum
  *               isMember:
  *                 type: boolean
  *                 default: false
@@ -51,6 +53,7 @@ module.exports = router;
  *                 type: string
  *             example:
  *               name: fake name
+ *               clubClimbingType: Boulder
  *               isMember: true
  *               city: city name
  *     responses:
